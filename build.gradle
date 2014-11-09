@@ -1,0 +1,47 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+version = '1.0-SNAPSHOT'
+mainClassName = 'info.vividcode.app.zaim.example.App'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Sample project of Zaim client', 'Implementation-Version': version
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'com.google.guava:guava:18.+'
+    compile 'com.google.http-client:google-http-client:1.19.0'
+    compile 'info.vividcode.utils:wscutils:0.1.+'
+    //testCompile 'junit:junit:4.+'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+def javaApiUrl = 'http://docs.oracle.com/javase/8/docs/api/'
+tasks.withType(Javadoc) {
+    options.encoding = 'UTF-8'
+    options.links(javaApiUrl)
+}
+/*
+test {
+    systemProperties 'property': 'value'
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
+*/
